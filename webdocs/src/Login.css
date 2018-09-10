@@ -1,0 +1,65 @@
+.LoginForm {
+    width: 80%;
+    margin: 50px 10%;
+    background-color: #369;
+    font-family: "Helvetica Neue",Helvetica,Verdana,Arial,sans-serif;
+    font-size: .75em;
+    line-height: 1;
+    position: relative;
+    text-align: center;
+}
+
+.login__input {
+    margin-bottom: .2rem;
+    padding: .5rem 0;
+    display: block;
+    font-size: 100%;
+}
+
+.login__input > label {
+    color: white;
+    cursor: default;
+    box-sizing: border-box;
+    width: 20%;
+    
+}
+.login__input >input {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.08) inset;
+    color: #333;
+    display: inline-block;
+    font-size: 13px;
+    line-height: 18px;
+    margin-top: 3px;
+    padding: .5rem;
+    vertical-align: middle;
+    width: 20%;
+}
+
+.login-footer {
+    color: white;
+    padding: 15px;
+    position: relative;
+    text-align: center;
+}
+.input{
+    background-color: rgb(250, 255, 189) !important;
+    background-image: none !important;
+    color: rgb(0, 0, 0) !important;
+}
+.webdocs-logo {
+    display: block;
+    margin: 0 auto;
+}
+
+.button-green {
+    background-color: #74c30e;
+    border-color: #66ab0c;
+    color: white;
+    cursor: pointer;
+    font-size: .9rem;
+    line-height: .9rem;
+    padding: .45rem .675rem;
+    width: 20%;
+}
