@@ -19,24 +19,22 @@ class Login extends React.Component {
             [event.target.name]: event.target.value           
         });
     }
-    handleSubmit(event) {
+    handleSubmit(event) { 
         event.preventDefault();
         console.log("this.state", this.state);
         console.log("this.props", this.props);
-
         this.props.onLogin(this.state);
-        
     }
 
     render () {
       return <form onSubmit={this.handleSubmit} >
             <div className="login__input">
                 <label htmlFor="username" >Username:</label>
-                <input type="text" name="username" className="input login-form-item" value={this.state.username} onChange={this.onChange}/>
+                <input type="text" name="username" className="input login-form-item" value={this.state.username} onChange={this.onChange} required/>
             </div>
             <div className="login__input">
                 <label htmlFor="password">Password:</label>
-                <input type="text" name="password" className="input login-form-item" value={this.state.password} onChange={this.onChange}/>
+                <input type="password" name="password" className="input login-form-item" value={this.state.password} onChange={this.onChange} required/>
             </div>            
             <input className="button-green" type="submit" value="LogIn"/>
         </form>
