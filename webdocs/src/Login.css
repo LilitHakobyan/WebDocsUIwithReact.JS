@@ -22,14 +22,20 @@
     padding: .5rem 0;
     display: block;
     font-size: 100%;
+    
 }
 
-.login__input > label {
+.login_label {
     color: white;
     cursor: default;
     box-sizing: border-box;
-    width: 20%;
-    
+    margin-bottom: .2rem;
+    padding: .5rem 0;
+    width: 84%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
 }
 .login__input >input {
     border: 1px solid #ccc;
@@ -77,7 +83,7 @@
     line-height: .9rem;
     padding: .45rem .675rem;
     width: 20%;
-    margin: auto;
+    margin:  auto;
 }
 .login-footer a {
     color:white;
@@ -88,6 +94,14 @@
     box-sizing: border-box;
     margin-bottom: .2rem;
     padding: .5rem 0;
+    color: white;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    background: transparent;
+    display: block;
+}
+.login-checkbox{
     color: white;
     border: 0;
     outline: 0;
@@ -161,4 +175,9 @@
     text-indent: -99999px;
     overflow: hidden;
     background-repeat: no-repeat;
+}
+.remember{
+    background: none;
+     border: none;
+    padding: 0;
 }

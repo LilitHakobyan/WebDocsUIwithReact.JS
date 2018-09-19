@@ -6,7 +6,7 @@ import acceptpic from './images/accept.png';
 import crosspic from './images/cross.png';
 import editpic from './images/edit.png';
 import closepic from './images/close.png';
-
+import PropTypes from 'prop-types';
 
 const User = (props) => {
     console.log(props.isActive);
@@ -38,6 +38,10 @@ const User = (props) => {
     <td ><a href="" className="admin" ><img  src={admin} alt=""/></a></td>    
     </tr>
   );
+};
+User.propTypes = {
+  fullName: PropTypes.string,
+  emailAddress: PropTypes.string
 };
 
 const UserList = (props) => {
@@ -89,5 +93,8 @@ class UsersForm extends React.Component {
       );
   }
 }
+UsersForm.propTypes = {
+  users: PropTypes.array
+};
 
 export default UsersForm;

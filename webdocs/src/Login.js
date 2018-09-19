@@ -4,10 +4,14 @@ import './bootstrap.min.css';
 import axios from 'axios';
 import WebDocsLogo from './images/WebDocsLogo-white.png'
 import loadingPic from './images/wolf_loading.gif'
+import PropTypes from 'prop-types';
 
 var access_token=null;
 var refresh_token=null;
 var errormessage ="";
+
+
+
 class Login extends React.Component {
 
     constructor(props){
@@ -35,7 +39,7 @@ class Login extends React.Component {
     }
 
     LoginCheck(props) {
-        var api_url='http://localhost:55029/api/oauth2/token';//https://docm-qa-wdwtest.helpsysdev.com/api/oauth2/token
+        var api_url="https://docm-qa-wdwuat.helpsysdev.com/api/oauth2/token"//'http://localhost:55029/api/oauth2/token';//https://docm-qa-wdwtest.helpsysdev.com/api/oauth2/token 
         var username = props.username;
         var password = props.password;
         var that = this;
@@ -52,9 +56,10 @@ class Login extends React.Component {
                    if(response.status===200) {
                         access_token=response.data.access_token;
                         refresh_token=response.data.refresh_token; 
+                        if( access_token != null & refresh_token!=null)
                         that.props.history.push("/users");
                         that.setState({loading: false});
-                        if( access_token != null & refresh_token!=null) return;                      
+                        return;                      
                        } 
                        else if(response.status===400){
                            errormessage="Invalid username and/or password. Please try again or contact your system administrator.";
@@ -75,14 +80,26 @@ class Login extends React.Component {
       return (this.state.loading ? <div ><img className="loading" src={loadingPic} alt=""/> </div> :
       <form onSubmit={this.handleSubmit} >
       <div className="formdiv">
-            <div className="login__input">
+            <div className="login_label">
                 <label htmlFor="username" >Username:</label>
-                <input type="text" name="username" className="input login-form-item" value={this.state.username} onChange={this.onChange} required/>
+                {/* <input type="text" name="username" className="input login-form-item" value={this.state.username} onChange={this.onChange} required/> */}
             </div>
             <div className="login__input">
+                {/* <label htmlFor="username" >Username:</label> */}
+                <input type="text" name="username" className="input login-form-item" value={this.state.username} onChange={this.onChange} required/>
+            </div>
+            <div className="login_label ">
                 <label htmlFor="password">Password:</label>
+                {/* <input type="password" name="password" className="input login-form-item" value={this.state.password} onChange={this.onChange} required/> */}
+            </div> 
+            <div className="login__input">
+                {/* <label htmlFor="password">Password:</label> */}
                 <input type="password" name="password" className="input login-form-item" value={this.state.password} onChange={this.onChange} required/>
-            </div>            
+            </div>   
+            <div className="login-checkbox">
+					<input type="checkbox" className="remember" name="remember" value="1" checked="checked" />
+					<label htmlFor="remember">Save username</label>
+			    </div>         
             <input className="button-green" type="submit" value="LogIn"/>
             </div>
         </form>)
@@ -118,5 +135,11 @@ function LogInForm (props) {
    </div>
         </div>;
 }
+
+Login.propTypes = {
+    username: PropTypes.string.isRequired,
+    password:PropTypes.string.isRequired,
+    loading:PropTypes.bool
+  };
 
 export default LogInForm;
