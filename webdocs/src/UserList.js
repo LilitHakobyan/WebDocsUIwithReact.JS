@@ -9,7 +9,6 @@ import closepic from './images/close.png';
 import PropTypes from 'prop-types';
 
 const User = (props) => {
-    console.log(props.isActive);
     let active;
     let admin;
     if(props.isActive===true)
@@ -39,9 +38,12 @@ const User = (props) => {
     </tr>
   );
 };
+
 User.propTypes = {
   fullName: PropTypes.string,
-  emailAddress: PropTypes.string
+  emailAddress: PropTypes.string,
+  isActive:PropTypes.bool,
+  isAdministrator:PropTypes.bool
 };
 
 const UserList = (props) => {
@@ -72,7 +74,9 @@ const UserList = (props) => {
   </div>
   )
 }
-
+UserList.propTypes = {
+  users: PropTypes.array
+};
 class UsersForm extends React.Component {
   state={
     users:[]
