@@ -1,7 +1,9 @@
 .UsersForm {
     text-align: center;
   }
-  
+  html {
+    height: 100%;
+}
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
     height: 80px;
@@ -21,13 +23,29 @@
   .App-intro {
     font-size: large;
   }
-  
-  @keyframes App-logo-spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
+  .page-content {
+    height: calc(100% - 85px);
+    overflow-y: auto;
+    padding-top: 10px;
+    width: 100%;
+    position: relative;
+}
+  .rjs-table>tbody tr td:nth-child(n+2) {
+    cursor: pointer;
+    text-align: left;
+}
+.rjs-table>tbody tr:nth-child(even) {
+  background-color: #eee;
+}
+  .rjs-table>tbody tr td {
+    max-width: 100px;
+    overflow: hidden;
+    padding: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
   table, th, td {
-    border: 1px solid black;
+    border: 1px solid whitesmoke;
     border-collapse: collapse;
   } 
   
@@ -40,10 +58,12 @@
     width:100%;
   }
   
-  th{
+  .thwidth{
      width:45px;
   }
-  
+  .thaction{
+    width: 9%;
+  }
   .header-row th {
     background-color: #369;
     color: white;
@@ -75,3 +95,56 @@
       color: #369;
       text-decoration: none;
   }
+ .fa-edit:before, .fa-pencil-square-o:before {
+    content: "\f044";
+}
+.fa-remove:before, .fa-close:before, .fa-times:before {
+  content: "\f00d";
+}
+.actionButton {
+  text-decoration: none!important;
+}
+
+a {
+  color: #369;
+  text-decoration: none;
+}
+i.fa {
+  margin-right: 5px;
+}
+.fa-lg {
+  font-size: 1.33333333em;
+  line-height: .75em;
+  vertical-align: -15%;
+}
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.fa-webdocs-dark-blue {
+  color: #246!important;
+}
+
+ img {
+  margin-right: 3px;
+  vertical-align: middle;
+  height: 16px;
+  width: 16px;
+}
+
+#pageHeader, .page-header {
+  background-color: #e5ecf3;
+  border-bottom: 1px solid #aaa;
+  -webkit-box-shadow: 0 1px 3px -1px rgba(50,50,50,0.5);
+  -moz-box-shadow: 0 1px 3px -1px rgba(50,50,50,0.5);
+  box-shadow: 0 1px 3px -1px rgba(50,50,50,0.5);
+  color: #369;
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 1.6rem;
+  padding: 5px;
+}
