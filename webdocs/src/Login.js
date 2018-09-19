@@ -3,9 +3,11 @@ import "./Login.css"
 import './bootstrap.min.css';
 import axios from 'axios';
 import WebDocsLogo from './images/WebDocsLogo-white.png'
+import loadingPic from './images/wolf_loading.gif'
 
 var access_token=null;
 var refresh_token=null;
+var errormessage ="";
 class Login extends React.Component {
 
     constructor(props){
@@ -48,22 +50,29 @@ class Login extends React.Component {
                .then((response) => {
                    console.log(response);
                    if(response.status===200) {
-                       debugger
                         access_token=response.data.access_token;
                         refresh_token=response.data.refresh_token; 
                         that.props.history.push("/users");
                         that.setState({loading: false});
-                       // if( access_token != null) return;                      
-                       }                                                      
+                        if( access_token != null & refresh_token!=null) return;                      
+                       } 
+                       else if(response.status===400){
+                           errormessage="Invalid username and/or password. Please try again or contact your system administrator.";
+                           that.setState({loading: false});
+                           that.props.history.push("/");
+                       }                                                     
                })
                .catch((error) => {
+                errormessage="Invalid username and/or password. Please try again or contact your system administrator.";
+                  that.setState({loading: false});
+                  that.props.history.push("/");
                   console.log("error",error);
                })
    
      }
 
     render () {
-      return (this.state.loading ? "Loadding..." :
+      return (this.state.loading ? <div ><img className="loading" src={loadingPic} alt=""/> </div> :
       <form onSubmit={this.handleSubmit} >
       <div className="formdiv">
             <div className="login__input">
@@ -83,7 +92,17 @@ class Login extends React.Component {
 
 function LogInForm (props) {
     return <div className="LoginForm">
+     <div className="logincontent">
         <img className="webdocs-logo" src={WebDocsLogo} alt=""/>
+        <div className="status-message ui-widget">
+	  <div className="ui-state-highlight ui-corner-all">
+		<p>
+			<span className="ui-icon ui-icon-info" id="spanid" ></span>
+			<strong>Info: </strong>
+			<span className="messageLabel">{errormessage}</span>
+		</p>
+	   </div>
+    </div>
         <Login {...props}/>
         <div className="login-form-item">
 					<i className="fa fa-angle-double-right fa-color-white"></i>
@@ -96,6 +115,7 @@ function LogInForm (props) {
         <div className="login-footer">
 					©&nbsp;<a href="http://www.helpsystems.com">HelpSystems</a>, 2018. Version 2.1.1.132
 				</div>
+   </div>
         </div>;
 }
 
